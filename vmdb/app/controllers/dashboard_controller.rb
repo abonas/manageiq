@@ -29,7 +29,7 @@ class DashboardController < ApplicationController
   end
 
   VALID_TABS = lambda { |x| Hash[x.map(&:to_s).zip(x)] }[[
-    :vi, :svc, :clo, :inf, :con, :aut, :opt, :set,  # normal tabs
+    :vi, :svc, :clo, :inf, :cnt, :con, :aut, :opt, :set,  # normal tabs
     :vs, :sto                                       # hidden tabs
   ]] # format is {"vi" => :vi, "svc" => :svc . . }
 
@@ -52,7 +52,7 @@ class DashboardController < ApplicationController
     end
 
     case tab
-    when :vi, :svc, :clo, :inf, :con, :aut, :opt, :set
+    when :vi, :svc, :clo, :inf, :cnt, :con, :aut, :opt, :set
 
       if session[:tab_url].key?(tab) # we remember url for this tab
         redirect_to(session[:tab_url][tab].merge(:only_path => true))
@@ -75,7 +75,7 @@ class DashboardController < ApplicationController
             end
           end
         end
-      when :clo, :inf, :svc
+      when :clo, :inf, :cnt, :svc
         tab_features.detect do |f|
           if EXPLORER_FEATURE_LINKS.include?(f) && role_allows(:feature => f, :any => true)
             redirect_to :controller => EXPLORER_FEATURE_LINKS[f], :action => "explorer"

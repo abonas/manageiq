@@ -50,6 +50,13 @@ module Menu
         ])
       end
 
+      def container_menu_section
+        Menu::Section.new(:cnt, "Containers", [
+            Menu::Item.new('ems_container',        _('Providers'),        'ems_container',     {:feature => 'ems_container_show_list'},     '/ems_container')
+        ])
+      end
+
+
       def storage_menu_section
         Menu::Section.new(:sto, "Storage", [
           Menu::Item.new('ontap_storage_system', ui_lookup(:tables => 'ontap_storage_system'), 'ontap_storage_system', {:feature => 'ontap_storage_system_show_list'}, '/ontap_storage_system'),
@@ -100,8 +107,9 @@ module Menu
 
       def default_menu
         storage_enabled = VMDB::Config.new("vmdb").config[:product][:storage]
+        containers_enabled = VMDB::Config.new("vmdb").config[:product][:containers]
 
-        [cloud_inteligence_menu_section, services_menu_section, clouds_menu_section, infrastructure_menu_section,
+        [cloud_inteligence_menu_section, services_menu_section, clouds_menu_section, infrastructure_menu_section, containers_enabled ? container_menu_section : nil,
          storage_enabled ? storage_menu_section : nil, control_menu_section, automate_menu_section,
          optimize_menu_section, configuration_menu_section].compact
       end

@@ -459,6 +459,50 @@ Vmdb::Application.routes.draw do
         save_post
     },
 
+    :ems_container => {
+        :get => %w(
+        dialog_load
+        discover
+        download_data
+        edit
+        index
+        new
+        protect
+        show
+        show_list
+        tagging_edit
+      ) +
+            compare_get,
+        :post => %w(
+        button
+        create
+        dynamic_checkbox_refresh
+        dynamic_list_refresh
+        dynamic_radio_button_refresh
+        dynamic_text_box_refresh
+        form_field_changed
+        listnav_search_selected
+        panel_control
+        protect
+        quick_search
+        save_col_widths
+        sections_field_changed
+        show
+        show_list
+        tag_edit_form_field_changed
+        tagging_edit
+        tl_chooser
+        update
+        wait_for_task
+      ) +
+            adv_search_post +
+            compare_post +
+            dialog_runner_post +
+            discover_get_post +
+            exp_post +
+            save_post
+    },
+
     :flavor => {
       # FIXME: Change tagging_edit to POST only; We need to remove the redirects
       # in app/controllers/application_controller/tags.rb#tag that are used in

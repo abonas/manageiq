@@ -1853,7 +1853,6 @@ class ApplicationController < ActionController::Base
     db     = db.to_s
     dbname = options[:dbname] || db.split("::").last.downcase # Get db name as text
     db_sym = dbname.to_sym                                    # Get db name as symbol
-
     # Determine if the view should be refreshed or use the existing view
     unless session[:view] &&                          # A view exists and
             session[:view].db.downcase == dbname &&   # the DB matches and
@@ -2316,6 +2315,8 @@ class ApplicationController < ActionController::Base
         session[:tab_url][:clo] = inbound_url if ["show", "show_list", "explorer"].include?(action_name)
       when "ems_cluster", "ems_infra", "host", "pxe", "repository", "resource_pool", "storage", "vm_infra"
         session[:tab_url][:inf] = inbound_url if ["show", "show_list", "explorer"].include?(action_name)
+      when "ems_container"
+        session[:tab_url][:cnt] = inbound_url if ["show", "show_list"].include?(action_name)
       when "miq_request"
         session[:tab_url][:svc] = inbound_url if ["index"].include?(action_name) && request.parameters["typ"] == "vm"
         session[:tab_url][:inf] = inbound_url if ["index"].include?(action_name) && request.parameters["typ"] == "host"
