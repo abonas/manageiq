@@ -1,6 +1,7 @@
 class EmsContainer < ExtManagementSystem
   SUBCLASSES = %w(
     EmsKubernetes
+    EmsOpenshift
   )
 
   def self.supported_subclasses
