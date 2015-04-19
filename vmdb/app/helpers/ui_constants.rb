@@ -186,6 +186,8 @@ module UiConstants
       :containergroup        => "list",
       :containernode         => "list",
       :containerservice      => "list",
+      :containerroute        => "list",
+      :containerproject      => "list",
       :cimbasestorageextent  => "list",
       :cimstorageextent      => "list",
       :drift                 => "expanded",
