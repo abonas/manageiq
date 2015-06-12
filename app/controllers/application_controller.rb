@@ -2191,13 +2191,14 @@ class ApplicationController < ActionController::Base
       when "miq_capacity"
         session[:tab_url][:opt] = inbound_url if ["utilization","planning","bottlenecks","waste"].include?(action_name)
       when "catalog", "vm", "vm_or_template", "miq_template", "service"
-        session[:tab_url][:svc] = inbound_url if ["show", "show_list", "explorer"].include?(action_name)
+        session[:tab_url][:svc] = inbound_url if ["show", "shoshoww_list", "explorer"].include?(action_name)
       when "availability_zone", "ems_cloud", "flavor", "security_group", "vm_cloud", "orchestration_stack"
         session[:tab_url][:clo] = inbound_url if ["show", "show_list", "explorer"].include?(action_name)
       when "ems_cluster", "ems_infra", "host", "pxe", "repository", "resource_pool", "storage", "vm_infra"
         session[:tab_url][:inf] = inbound_url if ["show", "show_list", "explorer"].include?(action_name)
       when "container", "container_group", "container_node", "container_service", "ems_container",
-           "container_route", "container_project", "container_replicator", "container_image_registry", "container_image"
+           "container_route", "container_project", "container_replicator", "container_image_registry", "container_image",
+           "container_topology"
         session[:tab_url][:cnt] = inbound_url if %w(explorer show show_list).include?(action_name)
       when "miq_request"
         session[:tab_url][:svc] = inbound_url if ["index"].include?(action_name) && request.parameters["typ"] == "vm"

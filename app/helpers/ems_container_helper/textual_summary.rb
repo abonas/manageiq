@@ -27,6 +27,10 @@ module EmsContainerHelper::TextualSummary
     items.collect { |m| self.send("textual_#{m}") }.flatten.compact
   end
 
+  def textual_group_topology
+    items = %w(topology)
+    items.collect { |m| send("textual_#{m}") }.flatten.compact
+  end
   #
   # Items
   #
@@ -74,5 +78,13 @@ module EmsContainerHelper::TextualSummary
                  {:value => @ems.last_refresh_error.try(:truncate, 120)}],
       :title => @ems.last_refresh_error
     }
+  end
+
+  def textual_topology
+    label = 'Topology'
+    h     = {:label => label, :image => "container_topology"}
+    h[:link]  = url_for(:controller => 'container_topology', :action => 'show', :id => @ems.id)
+    h[:title] = "Show topology"
+    h
   end
 end
