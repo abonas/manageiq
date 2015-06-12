@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <!--<title>Topology Graph Example</title>-->
+  <meta name="viewport" content="width=device-width">
+  <style>
+    /*@font-face {*/
+      /*font-family: 'FontAwesome';*/
+      /*src: url('../assets/fonts/fontawesome-webfont.svg') format('svg');*/
+    /*}*/
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+      font-size: 15px;
+    }
+    body {
+      margin: 0px;
+    }
+    kubernetes-topology-graph {
+      border: 10px solid lightgray;
+      position: fixed;
+      height: 76%;
+      width: 98%;
+      padding: 10px;
+    }
+    .legend {
+      display: inline-block;
+      padding: 0 10px;
+      font-family: "FontAwesome";
+
+    }
+    .legend label {
+      font-weight: 400;
+    }
+
+    .refresh {
+      display: inline-block;
+      width:35px;
+      height:35px;
+      padding:0;
+    }
+
+    #selected {
+      float: right;
+      display: block;
+      margin-top: 15px;
+    }
+
+    kubernetes-topology-icon {
+      padding: 7px 6px 12px 21px !important;
+    }
+
+    .kube-topology line.ServiceContainerGroup {
+      stroke-linecap: round;
+      stroke-dasharray: 5.5;
+    }
+
+    kubernetes-topology-icon svg {
+      width: 39px !important;;
+      height: 39px !important;;
+      display: block;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/assets/topology-graph.css" />
+</head>
+<body ng-app="topologyApp" ng-controller="containerTopologyController">
+
+<image src="/images/toolbars/refresh.png" ng-click="refresh()" class="btn btn-default refresh"/>
+
+<kubernetes-topology-graph items="items" relations="relations" kinds="kinds">
+</kubernetes-topology-graph>
+
+<div class="legend">
+  <label id="selected"></label>
+  <!--<button ng-click="poke()">Poke</button>-->
+
+  <div ng-if="kinds">
+  <kubernetes-topology-icon kind="ContainerGroup">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-ContainerGroup" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>Container Groups</label>
+
+  <kubernetes-topology-icon kind="Service">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-Service" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>Services</label>
+
+  <kubernetes-topology-icon kind="Node">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-Node" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>Nodes</label>
+
+  <kubernetes-topology-icon kind="Container">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-Container" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>Containers</label>
+
+  <kubernetes-topology-icon kind="Host">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-Host" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>Hosts</label>
+
+
+  <kubernetes-topology-icon kind="VM">
+    <svg class="kube-topology">
+      <use xlink:href="#vertex-VM" x="18" y="18"></use>
+    </svg>
+  </kubernetes-topology-icon>
+  <label>VMs</label>
+    </div>
+</div>
+
+<svg class="kube-topology" hidden>
+  <defs>
+    <g class="Node" id="vertex-Node">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/container_node.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+    <g class="ContainerGroup" id="vertex-ContainerGroup">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/container_group.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+    <g class="Service" id="vertex-Service">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/container_service.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+    <g class="Container" id="vertex-Container">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/container.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+    <g class="VM" id="vertex-VM">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/vm.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+    <g class="Host" id="vertex-Host">
+      <circle r="18"></circle>
+      <image xlink:href="/images/icons/new/host.png" width="18" height="18" x="-9" y="-9"/>
+    </g>
+  </defs>
+</svg>
+
+</body>
+</html>
+

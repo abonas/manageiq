@@ -48,7 +48,8 @@
           -    role_allows(:feature => "container_replicator_show_list") ||
           -    role_allows(:feature => "container_service_accord")       ||
           -    role_allows(:feature => "containers_filter_accord")       ||
-          -    role_allows(:feature => "containers_accord")
+          -    role_allows(:feature => "containers_accord")              ||
+          -    role_allows(:feature => "container_topology")
             %fieldset
               %h3= _('Containers')
               %table.style1
@@ -59,7 +60,8 @@
                           :containerroute      => "container_route",
                           :containerproject    => "container_project",
                           :containerreplicator => "container_replicator",
-                          :container           => "container"}
+                          :container           => "container",
+                          :containertopology   => "container_topology"}
                 - keys.each do |resource, table_view_name|
                   %tr
                     %td.key= ui_lookup(:tables => table_view_name)

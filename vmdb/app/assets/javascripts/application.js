@@ -15,6 +15,9 @@
 //= require controllers/schedule/schedule_form_controller
 //= require controllers/ops/diagnostics_database_form_controller
 //= require controllers/ops/log_collection_form_controller
+//= require controllers/container_topology/container_topology_controller
+//= require d3.js
+//= require topology-graph.js
 //= require miq_application
 //= require miq_dynatree_replacement
 //= require dialog_import_export
