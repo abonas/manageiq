@@ -82,7 +82,7 @@ module EmsContainerHelper::TextualSummary
 
   def textual_topology
     label = 'Topology'
-    h     = {:label => label, :image => "container_topology"}
+    h     = {:label => label}
     h[:link]  = url_for(:controller => 'container_topology', :action => 'show', :id => @ems.id)
     h[:title] = "Show topology"
     h

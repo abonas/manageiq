@@ -8,6 +8,7 @@ class ContainerNode < ActiveRecord::Base
   has_many   :container_node_conditions, :dependent => :destroy
   has_one    :computer_system, :as => :managed_entity, :dependent => :destroy
   belongs_to :lives_on, :polymorphic => true
+  has_many   :containers, :through => :container_groups
 
   delegate   :hardware, :to => :computer_system
 

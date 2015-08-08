@@ -9,6 +9,7 @@ class Container < ActiveRecord::Base
   belongs_to :container_definition
   belongs_to :container_image
   delegate   :container_image_registry, :to => :container_image
+  has_one    :container_node, :through => :container_group
 
   acts_as_miq_taggable
 end
