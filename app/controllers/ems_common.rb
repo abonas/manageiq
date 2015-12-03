@@ -177,6 +177,18 @@ module EmsCommon
                       pluralize(@view.extras[:total_count] - @view.extras[:auth_count], "other #{title.singularize}") +
                       " on this " + ui_lookup(:tables => @table_name)
       end
+    elsif @display == "middleware_servers" || session[:display] == "middleware_servers" && params[:display].nil?
+      title = ui_lookup(:tables => "middleware_servers")
+      drop_breadcrumb(:name => @ems.name + " (All #{title})",
+                      :url  => show_link(@ems, :display => @display))
+      @view, @pages = get_view(MiddlewareServer, :parent => @ems)  # Get the records (into a view) and the paginator
+      @showtype = @display
+      if @view.extras[:total_count] > @view.extras[:auth_count] && @view.extras[:total_count] &&
+          @view.extras[:auth_count]
+        @bottom_msg = "* You are not authorized to view " +
+            pluralize(@view.extras[:total_count] - @view.extras[:auth_count], "other #{title.singularize}") +
+            " on this " + ui_lookup(:tables => @table_name)
+      end
     elsif @display == "cloud_tenants" || (session[:display] == "cloud_tenants" && params[:display].nil?)
       title = "Cloud Tenants"
       drop_breadcrumb(:name => "#{@ems.name} (All #{title})", :url => show_link(@ems, :display => @display))
