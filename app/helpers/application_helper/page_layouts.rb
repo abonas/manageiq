@@ -5,6 +5,7 @@ module ApplicationHelper::PageLayouts
          @layout == "exception" ||
          @layout == "chargeback" ||
          @layout == "container_topology" ||
+         @layout == "middleware_topology" ||
          @layout == "container_dashboard" ||
          @layout.starts_with?("miq_request") ||
          %w(about all_tasks all_ui_tasks configuration diagnostics miq_ae_automate_button miq_ae_export
