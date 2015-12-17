@@ -96,6 +96,12 @@ class ContainerTopologyService
       else
         'Warning'
       end
+    when 'Kubernetes', 'Openshift', 'Atomic', 'OpenshiftEnterprise', 'AtomicEnterprise'
+      if entity.authentications.empty?
+        'Unknown'
+      else
+        entity.authentications.first.status.capitalize
+      end
     else 'Unknown'
     end
   end

@@ -67,6 +67,8 @@ angular.module('topologyApp', ['kubernetesUI','ui.bootstrap'])
                     return "#3F9C35";
                 case "NotReady":
                 case "Failed":
+                case "Error":
+                case "Unreachable":
                     return "#CC0000";
                 case 'Warning':
                 case 'Waiting':
@@ -74,6 +76,8 @@ angular.module('topologyApp', ['kubernetesUI','ui.bootstrap'])
                     return "#EC7A08";
                 case 'Unknown':
                 case 'Terminated':
+                    return "#bbb";
+                default :
                     return "#bbb";
             }});
         added.append("title");
